@@ -1,0 +1,8 @@
+pi@nibepi:~$ sudo journalctl -u nodered.service
+-- Journal begins at Wed 2026-11-04 17:39:49 CET, ends at Wed 2026-11-04 19:37:51 CET. --
+Nov 04 17:39:52 nibepi systemd[1]: Started Node-RED graphical event wiring tool.
+Nov 04 17:39:57 nibepi Node-RED[305]: (node:305) ExperimentalWarning: The fs.promises API is experimental
+Nov 04 17:40:05 nibepi Node-RED[305]: Startar
+Nov 04 17:40:06 nibepi Node-RED[305]: (node:305) ExperimentalWarning: The dns.promises API is experimental
+Nov 04 17:40:07 nibepi Node-RED[305]: Heatpump Series: fSeries
+Nov 04 17:40:12 nibepi Node-RED[305]: (node:305) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 601 config listeners added. Use emitter.setMaxListeners() to increase limit

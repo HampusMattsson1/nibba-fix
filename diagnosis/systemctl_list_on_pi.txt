@@ -1,0 +1,259 @@
+pi@nibepi:~$ sudo systemctl
+  UNIT                                                                                         LOAD   ACTIVE SUB       DESCRIPTION
+  proc-sys-fs-binfmt_misc.automount                                                            loaded active waiting   Arbitrary Executable File Formats File System Automount Point
+  sys-devices-platform-soc-3f201000.serial-tty-ttyAMA0.device                                  loaded active plugged   /sys/devices/platform/soc/3f201000.serial/tty/ttyAMA0
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0-mmcblk0p1.device loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p1
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0-mmcblk0p2.device loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p2
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0.device           loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0
+  sys-devices-platform-soc-3f215040.serial-tty-ttyS0-hci0.device                               loaded active plugged   /sys/devices/platform/soc/3f215040.serial/tty/ttyS0/hci0
+  sys-devices-platform-soc-3f215040.serial-tty-ttyS0.device                                    loaded active plugged   /sys/devices/platform/soc/3f215040.serial/tty/ttyS0
+  sys-devices-platform-soc-3f300000.mmcnr-mmc_host-mmc1-mmc1:0001-mmc1:0001:1-net-wlan0.device loaded active plugged   /sys/devices/platform/soc/3f300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1/net/wlan0
+  sys-devices-virtual-block-ram0.device                                                        loaded active plugged   /sys/devices/virtual/block/ram0
+  sys-devices-virtual-block-ram1.device                                                        loaded active plugged   /sys/devices/virtual/block/ram1
+  sys-devices-virtual-block-ram10.device                                                       loaded active plugged   /sys/devices/virtual/block/ram10
+  sys-devices-virtual-block-ram11.device                                                       loaded active plugged   /sys/devices/virtual/block/ram11
+  sys-devices-virtual-block-ram12.device                                                       loaded active plugged   /sys/devices/virtual/block/ram12
+  sys-devices-virtual-block-ram13.device                                                       loaded active plugged   /sys/devices/virtual/block/ram13
+  sys-devices-virtual-block-ram14.device                                                       loaded active plugged   /sys/devices/virtual/block/ram14
+  sys-devices-virtual-block-ram15.device                                                       loaded active plugged   /sys/devices/virtual/block/ram15
+  UNIT                                                                                         LOAD   ACTIVE SUB       DESCRIPTION
+  proc-sys-fs-binfmt_misc.automount                                                            loaded active waiting   Arbitrary Executable File Formats File System Automount Point
+  sys-devices-platform-soc-3f201000.serial-tty-ttyAMA0.device                                  loaded active plugged   /sys/devices/platform/soc/3f201000.serial/tty/ttyAMA0
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0-mmcblk0p1.device loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p1
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0-mmcblk0p2.device loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p2
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0.device           loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0
+  sys-devices-platform-soc-3f215040.serial-tty-ttyS0-hci0.device                               loaded active plugged   /sys/devices/platform/soc/3f215040.serial/tty/ttyS0/hci0
+  sys-devices-platform-soc-3f215040.serial-tty-ttyS0.device                                    loaded active plugged   /sys/devices/platform/soc/3f215040.serial/tty/ttyS0
+  sys-devices-platform-soc-3f300000.mmcnr-mmc_host-mmc1-mmc1:0001-mmc1:0001:1-net-wlan0.device loaded active plugged   /sys/devices/platform/soc/3f300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1/net/wlan0
+  sys-devices-virtual-block-ram0.device                                                        loaded active plugged   /sys/devices/virtual/block/ram0
+  sys-devices-virtual-block-ram1.device                                                        loaded active plugged   /sys/devices/virtual/block/ram1
+  sys-devices-virtual-block-ram10.device                                                       loaded active plugged   /sys/devices/virtual/block/ram10
+  sys-devices-virtual-block-ram11.device                                                       loaded active plugged   /sys/devices/virtual/block/ram11
+  sys-devices-virtual-block-ram12.device                                                       loaded active plugged   /sys/devices/virtual/block/ram12
+  sys-devices-virtual-block-ram13.device                                                       loaded active plugged   /sys/devices/virtual/block/ram13
+  sys-devices-virtual-block-ram14.device                                                       loaded active plugged   /sys/devices/virtual/block/ram14
+  sys-devices-virtual-block-ram15.device                                                       loaded active plugged   /sys/devices/virtual/block/ram15
+  sys-devices-virtual-block-ram2.device                                                        loaded active plugged   /sys/devices/virtual/block/ram2
+  sys-devices-virtual-block-ram3.device                                                        loaded active plugged   /sys/devices/virtual/block/ram3
+  sys-devices-virtual-block-ram4.device                                                        loaded active plugged   /sys/devices/virtual/block/ram4
+  sys-devices-virtual-block-ram5.device                                                        loaded active plugged   /sys/devices/virtual/block/ram5
+  sys-devices-virtual-block-ram6.device                                                        loaded active plugged   /sys/devices/virtual/block/ram6
+  sys-devices-virtual-block-ram7.device                                                        loaded active plugged   /sys/devices/virtual/block/ram7
+  sys-devices-virtual-block-ram8.device                                                        loaded active plugged   /sys/devices/virtual/block/ram8
+  sys-devices-virtual-block-ram9.device                                                        loaded active plugged   /sys/devices/virtual/block/ram9
+  sys-devices-virtual-misc-rfkill.device                                                       loaded active plugged   /sys/devices/virtual/misc/rfkill
+  sys-devices-virtual-tty-ttyprintk.device                                                     loaded active plugged   /sys/devices/virtual/tty/ttyprintk
+  sys-module-configfs.device                                                                   loaded active plugged   /sys/module/configfs
+  sys-module-fuse.device                                                                       loaded active plugged   /sys/module/fuse
+  sys-subsystem-bluetooth-devices-hci0.device                                                  loaded active plugged   /sys/subsystem/bluetooth/devices/hci0
+  sys-subsystem-net-devices-wlan0.device                                                       loaded active plugged   /sys/subsystem/net/devices/wlan0
+  -.mount                                                                                      loaded active mounted   Root Mount
+  boot.mount                                                                                   loaded active mounted   /boot
+  dev-mqueue.mount                                                                             loaded active mounted   POSIX Message Queue File System
+  run-rpc_pipefs.mount                                                                         loaded active mounted   RPC Pipe File System
+  run-user-1000.mount                                                                          loaded active mounted   /run/user/1000
+  sys-fs-fuse-connections.mount                                                                loaded active mounted   FUSE Control File System
+  sys-kernel-config.mount                                                                      loaded active mounted   Kernel Configuration File System
+  sys-kernel-debug.mount                                                                       loaded active mounted   Kernel Debug File System
+  sys-kernel-tracing.mount                                                                     loaded active mounted   Kernel Trace File System
+  tmp.mount                                                                                    loaded active mounted   /tmp
+  var-log.mount                                                                                loaded active mounted   /var/log
+  var-tmp.mount                                                                                loaded active mounted   /var/tmp
+  systemd-ask-password-plymouth.path                                                           loaded active waiting   Forward Password Requests to Plymouth Directory Watch
+  systemd-ask-password-wall.path                                                               loaded active waiting   Forward Password Requests to Wall Directory Watch
+  init.scope                                                                                   loaded active running   System and Service Manager
+  session-3.scope                                                                              loaded active running   Session 3 of user pi
+● apt-daily.service                                                                            loaded failed failed    Daily apt download activities
+  avahi-daemon.service                                                                         loaded active running   Avahi mDNS/DNS-SD Stack
+  bluetooth.service                                                                            loaded active running   Bluetooth service
+  bthelper@hci0.service                                                                        loaded active exited    Raspberry Pi bluetooth helper
+  busybox-klogd.service                                                                        loaded active exited    LSB: Starts klogd
+  busybox-syslogd.service                                                                      loaded active running   LSB: Starts syslogd
+  console-setup.service                                                                        loaded active exited    Set console font and keymap
+  cron.service                                                                                 loaded active running   Regular background program processing daemon
+  dbus.service                                                                                 loaded active running   D-Bus System Message Bus
+  dhcpcd.service                                                                               loaded active running   DHCP Client Daemon
+● exim4-base.service                                                                           loaded failed failed    exim4-base housekeeping
+● exim4.service                                                                                loaded failed failed    LSB: exim Mail Transport Agent
+  fake-hwclock.service                                                                         loaded active exited    Restore / save the current clock
+  getty@tty1.service                                                                           loaded active running   Getty on tty1
+  hciuart.service                                                                              loaded active running   Configure Bluetooth Modems connected by UART
+  ifupdown-pre.service                                                                         loaded active exited    Helper to synchronize boot up for ifupdown
+  keyboard-setup.service                                                                       loaded active exited    Set the console keyboard layout
+  kmod-static-nodes.service                                                                    loaded active exited    Create list of static device nodes for the current kernel
+  mosquitto.service                                                                            loaded active running   Mosquitto MQTT Broker
+  networking.service                                                                           loaded active exited    Raise network interfaces
+  nmbd.service                                                                                 loaded active running   Samba NMB Daemon
+  nodered.service                                                                              loaded active running   Node-RED graphical event wiring tool
+  ntp.service                                                                                  loaded active running   Network Time Service
+  plymouth-quit-wait.service                                                                   loaded active exited    Hold until boot process finishes up
+  plymouth-quit.service                                                                        loaded active exited    Terminate Plymouth Boot Screen
+  plymouth-read-write.service                                                                  loaded active exited    Tell Plymouth To Write Out Runtime Data
+  plymouth-start.service                                                                       loaded active exited    Show Plymouth Boot Screen
+  raspi-config.service                                                                         loaded active exited    LSB: Switch to ondemand cpu governor (unless shift key is pressed)
+  rc-local.service                                                                             loaded active exited    /etc/rc.local Compatibility
+  rpi-eeprom-update.service                                                                    loaded active exited    Check for Raspberry Pi EEPROM updates
+  ssh.service                                                                                  loaded active running   OpenBSD Secure Shell server
+  systemd-fsck-root.service                                                                    loaded active exited    File System Check on Root Device
+  systemd-fsck@dev-disk-by\x2dpartuuid-d6009415\x2d01.service                                  loaded active exited    File System Check on /dev/disk/by-partuuid/d6009415-01
+  systemd-journal-flush.service                                                                loaded active exited    Flush Journal to Persistent Storage
+  systemd-journald.service                                                                     loaded active running   Journal Service
+  systemd-logind.service                                                                       loaded active running   User Login Management
+  systemd-modules-load.service                                                                 loaded active exited    Load Kernel Modules
+  systemd-random-seed.service                                                                  loaded active exited    Load/Save Random Seed
+  systemd-remount-fs.service                                                                   loaded active exited    Remount Root and Kernel File Systems
+  systemd-sysctl.service                                                                       loaded active exited    Apply Kernel Variables
+  systemd-sysusers.service                                                                     loaded active exited    Create System Users
+  systemd-tmpfiles-setup-dev.service                                                           loaded active exited    Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service                                                               loaded active exited    Create Volatile Files and Directories
+  systemd-udev-trigger.service                                                                 loaded active exited    Coldplug All udev Devices
+  UNIT                                                                                         LOAD   ACTIVE SUB       DESCRIPTION
+  proc-sys-fs-binfmt_misc.automount                                                            loaded active waiting   Arbitrary Executable File Formats File System Automount Point
+  sys-devices-platform-soc-3f201000.serial-tty-ttyAMA0.device                                  loaded active plugged   /sys/devices/platform/soc/3f201000.serial/tty/ttyAMA0
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0-mmcblk0p1.device loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p1
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0-mmcblk0p2.device loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p2
+  sys-devices-platform-soc-3f202000.mmc-mmc_host-mmc0-mmc0:0001-block-mmcblk0.device           loaded active plugged   /sys/devices/platform/soc/3f202000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0
+  sys-devices-platform-soc-3f215040.serial-tty-ttyS0-hci0.device                               loaded active plugged   /sys/devices/platform/soc/3f215040.serial/tty/ttyS0/hci0
+  sys-devices-platform-soc-3f215040.serial-tty-ttyS0.device                                    loaded active plugged   /sys/devices/platform/soc/3f215040.serial/tty/ttyS0
+  sys-devices-platform-soc-3f300000.mmcnr-mmc_host-mmc1-mmc1:0001-mmc1:0001:1-net-wlan0.device loaded active plugged   /sys/devices/platform/soc/3f300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1/net/wlan0
+  sys-devices-virtual-block-ram0.device                                                        loaded active plugged   /sys/devices/virtual/block/ram0
+  sys-devices-virtual-block-ram1.device                                                        loaded active plugged   /sys/devices/virtual/block/ram1
+  sys-devices-virtual-block-ram10.device                                                       loaded active plugged   /sys/devices/virtual/block/ram10
+  sys-devices-virtual-block-ram11.device                                                       loaded active plugged   /sys/devices/virtual/block/ram11
+  sys-devices-virtual-block-ram12.device                                                       loaded active plugged   /sys/devices/virtual/block/ram12
+  sys-devices-virtual-block-ram13.device                                                       loaded active plugged   /sys/devices/virtual/block/ram13
+  sys-devices-virtual-block-ram14.device                                                       loaded active plugged   /sys/devices/virtual/block/ram14
+  sys-devices-virtual-block-ram15.device                                                       loaded active plugged   /sys/devices/virtual/block/ram15
+  sys-devices-virtual-block-ram2.device                                                        loaded active plugged   /sys/devices/virtual/block/ram2
+  sys-devices-virtual-block-ram3.device                                                        loaded active plugged   /sys/devices/virtual/block/ram3
+  sys-devices-virtual-block-ram4.device                                                        loaded active plugged   /sys/devices/virtual/block/ram4
+  sys-devices-virtual-block-ram5.device                                                        loaded active plugged   /sys/devices/virtual/block/ram5
+  sys-devices-virtual-block-ram6.device                                                        loaded active plugged   /sys/devices/virtual/block/ram6
+  sys-devices-virtual-block-ram7.device                                                        loaded active plugged   /sys/devices/virtual/block/ram7
+  sys-devices-virtual-block-ram8.device                                                        loaded active plugged   /sys/devices/virtual/block/ram8
+  sys-devices-virtual-block-ram9.device                                                        loaded active plugged   /sys/devices/virtual/block/ram9
+  sys-devices-virtual-misc-rfkill.device                                                       loaded active plugged   /sys/devices/virtual/misc/rfkill
+  sys-devices-virtual-tty-ttyprintk.device                                                     loaded active plugged   /sys/devices/virtual/tty/ttyprintk
+  sys-module-configfs.device                                                                   loaded active plugged   /sys/module/configfs
+  sys-module-fuse.device                                                                       loaded active plugged   /sys/module/fuse
+  sys-subsystem-bluetooth-devices-hci0.device                                                  loaded active plugged   /sys/subsystem/bluetooth/devices/hci0
+  sys-subsystem-net-devices-wlan0.device                                                       loaded active plugged   /sys/subsystem/net/devices/wlan0
+  -.mount                                                                                      loaded active mounted   Root Mount
+  boot.mount                                                                                   loaded active mounted   /boot
+  dev-mqueue.mount                                                                             loaded active mounted   POSIX Message Queue File System
+  run-rpc_pipefs.mount                                                                         loaded active mounted   RPC Pipe File System
+  run-user-1000.mount                                                                          loaded active mounted   /run/user/1000
+  sys-fs-fuse-connections.mount                                                                loaded active mounted   FUSE Control File System
+  sys-kernel-config.mount                                                                      loaded active mounted   Kernel Configuration File System
+  sys-kernel-debug.mount                                                                       loaded active mounted   Kernel Debug File System
+  sys-kernel-tracing.mount                                                                     loaded active mounted   Kernel Trace File System
+  tmp.mount                                                                                    loaded active mounted   /tmp
+  var-log.mount                                                                                loaded active mounted   /var/log
+  var-tmp.mount                                                                                loaded active mounted   /var/tmp
+  systemd-ask-password-plymouth.path                                                           loaded active waiting   Forward Password Requests to Plymouth Directory Watch
+  systemd-ask-password-wall.path                                                               loaded active waiting   Forward Password Requests to Wall Directory Watch
+  init.scope                                                                                   loaded active running   System and Service Manager
+  session-3.scope                                                                              loaded active running   Session 3 of user pi
+● apt-daily.service                                                                            loaded failed failed    Daily apt download activities
+  avahi-daemon.service                                                                         loaded active running   Avahi mDNS/DNS-SD Stack
+  bluetooth.service                                                                            loaded active running   Bluetooth service
+  bthelper@hci0.service                                                                        loaded active exited    Raspberry Pi bluetooth helper
+  busybox-klogd.service                                                                        loaded active exited    LSB: Starts klogd
+  busybox-syslogd.service                                                                      loaded active running   LSB: Starts syslogd
+  console-setup.service                                                                        loaded active exited    Set console font and keymap
+  cron.service                                                                                 loaded active running   Regular background program processing daemon
+  dbus.service                                                                                 loaded active running   D-Bus System Message Bus
+  dhcpcd.service                                                                               loaded active running   DHCP Client Daemon
+● exim4-base.service                                                                           loaded failed failed    exim4-base housekeeping
+● exim4.service                                                                                loaded failed failed    LSB: exim Mail Transport Agent
+  fake-hwclock.service                                                                         loaded active exited    Restore / save the current clock
+  getty@tty1.service                                                                           loaded active running   Getty on tty1
+  hciuart.service                                                                              loaded active running   Configure Bluetooth Modems connected by UART
+  ifupdown-pre.service                                                                         loaded active exited    Helper to synchronize boot up for ifupdown
+  keyboard-setup.service                                                                       loaded active exited    Set the console keyboard layout
+  kmod-static-nodes.service                                                                    loaded active exited    Create list of static device nodes for the current kernel
+  mosquitto.service                                                                            loaded active running   Mosquitto MQTT Broker
+  networking.service                                                                           loaded active exited    Raise network interfaces
+  nmbd.service                                                                                 loaded active running   Samba NMB Daemon
+  nodered.service                                                                              loaded active running   Node-RED graphical event wiring tool
+  ntp.service                                                                                  loaded active running   Network Time Service
+  plymouth-quit-wait.service                                                                   loaded active exited    Hold until boot process finishes up
+  plymouth-quit.service                                                                        loaded active exited    Terminate Plymouth Boot Screen
+  plymouth-read-write.service                                                                  loaded active exited    Tell Plymouth To Write Out Runtime Data
+  plymouth-start.service                                                                       loaded active exited    Show Plymouth Boot Screen
+  raspi-config.service                                                                         loaded active exited    LSB: Switch to ondemand cpu governor (unless shift key is pressed)
+  rc-local.service                                                                             loaded active exited    /etc/rc.local Compatibility
+  rpi-eeprom-update.service                                                                    loaded active exited    Check for Raspberry Pi EEPROM updates
+  ssh.service                                                                                  loaded active running   OpenBSD Secure Shell server
+  systemd-fsck-root.service                                                                    loaded active exited    File System Check on Root Device
+  systemd-fsck@dev-disk-by\x2dpartuuid-d6009415\x2d01.service                                  loaded active exited    File System Check on /dev/disk/by-partuuid/d6009415-01
+  systemd-journal-flush.service                                                                loaded active exited    Flush Journal to Persistent Storage
+  systemd-journald.service                                                                     loaded active running   Journal Service
+  systemd-logind.service                                                                       loaded active running   User Login Management
+  systemd-modules-load.service                                                                 loaded active exited    Load Kernel Modules
+  systemd-random-seed.service                                                                  loaded active exited    Load/Save Random Seed
+  systemd-remount-fs.service                                                                   loaded active exited    Remount Root and Kernel File Systems
+  systemd-sysctl.service                                                                       loaded active exited    Apply Kernel Variables
+  systemd-sysusers.service                                                                     loaded active exited    Create System Users
+  systemd-tmpfiles-setup-dev.service                                                           loaded active exited    Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service                                                               loaded active exited    Create Volatile Files and Directories
+  systemd-udev-trigger.service                                                                 loaded active exited    Coldplug All udev Devices
+  systemd-udev-trigger.service                                                                 loaded active exited    Coldplug All udev Devices
+  systemd-udevd.service                                                                        loaded active running   Rule-based Manager for Device Events and Files
+  systemd-update-utmp.service                                                                  loaded active exited    Update UTMP about System Boot/Shutdown
+  systemd-user-sessions.service                                                                loaded active exited    Permit User Sessions
+  user-runtime-dir@1000.service                                                                loaded active exited    User Runtime Directory /run/user/1000
+  user@1000.service                                                                            loaded active running   User Manager for UID 1000
+  watchdog.service                                                                             loaded active running   watchdog daemon
+  wpa_supplicant.service                                                                       loaded active running   WPA supplicant
+  -.slice                                                                                      loaded active active    Root Slice
+  system-bthelper.slice                                                                        loaded active active    system-bthelper.slice
+  system-getty.slice                                                                           loaded active active    system-getty.slice
+  system-modprobe.slice                                                                        loaded active active    system-modprobe.slice
+  system-systemd\x2dfsck.slice                                                                 loaded active active    system-systemd\x2dfsck.slice
+  system.slice                                                                                 loaded active active    System Slice
+  user-1000.slice                                                                              loaded active active    User Slice of UID 1000
+  user.slice                                                                                   loaded active active    User and Session Slice
+  avahi-daemon.socket                                                                          loaded active running   Avahi mDNS/DNS-SD Stack Activation Socket
+  dbus.socket                                                                                  loaded active running   D-Bus System Message Bus Socket
+  systemd-fsckd.socket                                                                         loaded active listening fsck to fsckd communication Socket
+  systemd-initctl.socket                                                                       loaded active listening initctl Compatibility Named Pipe
+  systemd-journald-audit.socket                                                                loaded active running   Journal Audit Socket
+  systemd-journald-dev-log.socket                                                              loaded active running   Journal Socket (/dev/log)
+  systemd-journald.socket                                                                      loaded active running   Journal Socket
+  systemd-rfkill.socket                                                                        loaded active listening Load/Save RF Kill Switch Status /dev/rfkill Watch
+  systemd-udevd-control.socket                                                                 loaded active running   udev Control Socket
+  systemd-udevd-kernel.socket                                                                  loaded active running   udev Kernel Socket
+  basic.target                                                                                 loaded active active    Basic System
+  bluetooth.target                                                                             loaded active active    Bluetooth
+  cryptsetup.target                                                                            loaded active active    Local Encrypted Volumes
+  getty.target                                                                                 loaded active active    Login Prompts
+  graphical.target                                                                             loaded active active    Graphical Interface
+  local-fs-pre.target                                                                          loaded active active    Local File Systems (Pre)
+  local-fs.target                                                                              loaded active active    Local File Systems
+  multi-user.target                                                                            loaded active active    Multi-User System
+  network-online.target                                                                        loaded active active    Network is Online
+  network.target                                                                               loaded active active    Network
+  nfs-client.target                                                                            loaded active active    NFS client services
+  paths.target                                                                                 loaded active active    Paths
+  remote-fs-pre.target                                                                         loaded active active    Remote File Systems (Pre)
+  remote-fs.target                                                                             loaded active active    Remote File Systems
+  slices.target                                                                                loaded active active    Slices
+  sockets.target                                                                               loaded active active    Sockets
+  swap.target                                                                                  loaded active active    Swap
+  sysinit.target                                                                               loaded active active    System Initialization
+  timers.target                                                                                loaded active active    Timers
+  apt-daily-upgrade.timer                                                                      loaded active waiting   Daily apt upgrade and clean activities
+  apt-daily.timer                                                                              loaded active waiting   Daily apt download activities
+  e2scrub_all.timer                                                                            loaded active waiting   Periodic ext4 Online Metadata Check for All Filesystems
+  exim4-base.timer                                                                             loaded active waiting   Daily exim4-base housekeeping
+  fstrim.timer                                                                                 loaded active waiting   Discard unused blocks once a week
+  man-db.timer                                                                                 loaded active waiting   Daily man-db regeneration
+  systemd-tmpfiles-clean.timer                                                                 loaded active waiting   Daily Cleanup of Temporary Directories
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+141 loaded units listed. Pass --all to see loaded but inactive units, too.
+To show all installed unit files use 'systemctl list-unit-files'.
+lines 92-148/148 (END)
