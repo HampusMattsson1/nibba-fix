@@ -1,0 +1,3 @@
+# Nested repos: ignored; edited files are force-added and stay tracked
+/nibepi/
+/node-red-contrib-nibepi/
