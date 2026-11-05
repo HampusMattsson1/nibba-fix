@@ -1,0 +1,2 @@
+att sätta token till "elpris:SE4" verkar göra något, men det går inte rätt efter det.
+vet inte om det går att felsöka och testa på något bättre sätt, kan nog vara linux rakt upp och ner bara att nibe anslutningen inte lär fungera

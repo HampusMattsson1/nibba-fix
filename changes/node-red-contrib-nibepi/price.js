@@ -108,6 +108,13 @@ module.exports = function(RED) {
             }
             this.send({topic:"Elpriskälla",payload:data});
         });
+        let priceConfig = server.nibe.getConfig().price;
+        if(priceConfig && priceConfig.enable===true && priceConfig.source==="tibber" &&
+            /^elpris:SE[1-4]$/i.test(priceConfig.token || "")) {
+            server.runElpris().catch(error => {
+                console.error(`Elpris data check failed: ${error}`);
+            });
+        }
         this.on('close', function() {
             let system = config.system.replace('s','S');
             server.nibeData.removeAllListeners();

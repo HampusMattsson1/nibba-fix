@@ -2119,6 +2119,7 @@ const checkTranslation = (node) => {
         this.updateData = updateData;
         this.hotwaterPlugin = hotwaterPlugin;
         this.runTibber = getTibberData;
+        this.runElpris = getElprisData;
         this.runFan = runFan;
         this.sendError = sendError;
         this.curveAdjust = curveAdjust;
