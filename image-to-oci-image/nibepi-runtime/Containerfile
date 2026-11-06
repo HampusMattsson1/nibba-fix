@@ -26,7 +26,8 @@ COPY --chown=pi:pi node-red-contrib-nibepi /home/pi/src/node-red-contrib-nibepi
 COPY --chown=pi:pi changes/node-red-contrib-nibepi/ /home/pi/src/node-red-contrib-nibepi/
 RUN cd /home/pi/src/node-red-contrib-nibepi && npm install --omit=dev \
  && mkdir -p /home/pi/.node-red && cd /home/pi/.node-red \
- && npm install /home/pi/src/node-red-contrib-nibepi
+ && npm install /home/pi/src/node-red-contrib-nibepi node-red-dashboard@~2.22.1 node-red-node-ui-list@~0.2.5
+# Dashboard must be in userDir, otherwise Node-RED does not load it and /ui returns 404.
 
 EXPOSE 1880
 CMD ["node-red", "--userDir", "/home/pi/.node-red"]
