@@ -1,0 +1,32 @@
+FROM docker.io/library/node:16-bookworm-slim
+
+# Node 12: serialport 7/bindings 2.x (NAN) does not compile on Node 14+.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends curl ca-certificates \
+ && rm -rf /var/lib/apt/lists/* \
+ && npm install -g n \
+ && n 12.22.12 \
+ && node -v
+
+# git: nibepi dependency is fetched from GitHub. python3/make/g++: serialport native build.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git python3 make g++ ca-certificates \
+ && rm -rf /var/lib/apt/lists/* \
+ && npm install -g node-gyp@9 \
+ && npm config set -g node_gyp "$(npm root -g)/node-gyp/bin/node-gyp.js" \
+ && npm install -g node-red@2 \
+ && usermod -l pi -d /home/pi -m node && groupmod -n pi node
+
+USER pi
+ENV HOME=/home/pi \
+    NODE_OPTIONS=--max_old_space_size=256
+WORKDIR /home/pi
+
+COPY --chown=pi:pi node-red-contrib-nibepi /home/pi/src/node-red-contrib-nibepi
+COPY --chown=pi:pi changes/node-red-contrib-nibepi/ /home/pi/src/node-red-contrib-nibepi/
+RUN cd /home/pi/src/node-red-contrib-nibepi && npm install --omit=dev \
+ && mkdir -p /home/pi/.node-red && cd /home/pi/.node-red \
+ && npm install /home/pi/src/node-red-contrib-nibepi
+
+EXPOSE 1880
+CMD ["node-red", "--userDir", "/home/pi/.node-red"]

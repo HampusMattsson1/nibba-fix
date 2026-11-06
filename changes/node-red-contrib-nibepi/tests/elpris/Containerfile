@@ -1,7 +1,7 @@
 FROM docker.io/library/node:22-alpine
 
 WORKDIR /app
-COPY config_node.js price.js translate.json ./
+COPY config_node.js price.js price_graph.js translate.json ./
 COPY tests/elpris ./tests/elpris
 
-CMD ["sh", "-c", "node --check config_node.js && node --check price.js && node --check tests/elpris/api-smoke.js && node -e \"JSON.parse(require('node:fs').readFileSync('translate.json', 'utf8'))\" && node --test tests/elpris/*.test.js"]
+CMD ["sh", "-c", "node --check config_node.js && node --check price.js && node --check price_graph.js && node --check tests/elpris/api-smoke.js && node -e \"JSON.parse(require('node:fs').readFileSync('translate.json', 'utf8'))\" && node --test tests/elpris/*.test.js"]

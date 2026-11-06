@@ -13,7 +13,7 @@ podman build -f changes/node-red-contrib-nibepi/tests/elpris/Containerfile -t ni
 podman run --rm nibba-elpris-test
 ```
 
-Bygget kontrollerar syntaxen för `config_node.js` och `price.js`. Därefter körs
+Bygget kontrollerar syntaxen för `config_node.js`, `price.js` och `price_graph.js`. Därefter körs
 automattesterna för:
 
 - API-kontroll när elpriskällan är aktiverad, även utan Nibe-anslutning
@@ -21,6 +21,7 @@ automattesterna för:
 - röd status och felmeddelande när källan rapporterar ett fel
 - att vanliga Tibber-token och avstängd prisreglering inte startar API-kontrollen
 - att prisnodens server exponerar hämtfunktionen som startkontrollen anropar
+- prisgrafens serier för strängvärden, saknad morgondagslista, sortering och okänd nivå
 
 Docker kan användas på samma sätt: ersätt `podman` med `docker`.
 
@@ -56,3 +57,6 @@ API-åtkomst utan att ansluta värmepumpen.
 En grön status bekräftar endast att elpris-API:t kan nås. Den bekräftar inte
 Nibe-anslutning eller att värmepumpens reglering har körts; det kräver en
 fungerande pumpanslutning.
+
+Prisgrafen använde en konvertering som kastade fel när kurvjusteringen var en
+sträng. Logiken ligger nu i `price_graph.js` och testas här.

@@ -2,6 +2,7 @@ module.exports = function(RED) {
     const EventEmitter = require('events').EventEmitter;
     require('events').EventEmitter.defaultMaxListeners = 600;
     const https = require('https');
+    const buildPriceGraph = require('./price_graph.js');
     const nibeData = new EventEmitter()
     const nibe = require('nibepi')
     var serialPort = "";
@@ -903,54 +904,7 @@ module.exports = function(RED) {
             config.price = {};
             nibe.setConfig(config);
         }
-        var today = tibber.data.viewer.homes[0].currentSubscription.priceInfo.today;
-        var tomorrow;
-        if(tibber.data.viewer.homes[0].currentSubscription.priceInfo.tomorrow!==undefined) {
-            tomorrow = tibber.data.viewer.homes[0].currentSubscription.priceInfo.tomorrow;
-        }
-        var priceArray = today.concat(tomorrow);
-        priceArray.sort(function(a,b){return a.energy - b.energy});
-        if(tibber.data.viewer.homes[0].currentSubscription.priceInfo.tomorrow!==undefined) {
-            tomorrow = tibber.data.viewer.homes[0].currentSubscription.priceInfo.tomorrow;
-        }
-        var valueArray = [];
-        var adjustArray = [];
-        for( var o = 0; o < priceArray.length; o++){
-            let timestamp = toTimestamp(priceArray[o].startsAt)
-            var adjust = 0;
-            let hotwater_adjust = Number(config.price.hotwater_normal);
-            let value = Number(priceArray[o].energy*100).toFixed(2);
-            if(priceArray[o].level=="VERY_CHEAP") {
-                hotwater_adjust = Number(config.price.hotwater_very_cheap);
-                adjust = config.price['heat_very_cheap_'+system]||0;
-            } else if(priceArray[o].level=="CHEAP") {
-                hotwater_adjust = Number(config.price.hotwater_cheap);
-                adjust = config.price['heat_cheap_'+system]||0;
-            } else if(priceArray[o].level=="NORMAL") {
-                hotwater_adjust = Number(config.price.hotwater_normal);
-                adjust = config.price['heat_normal_'+system]||0;
-            } else if(priceArray[o].level=="EXPENSIVE") {
-                hotwater_adjust = Number(config.price.hotwater_expensive);
-                adjust = config.price['heat_expensive_'+system]||0;
-            } else if(priceArray[o].level=="VERY_EXPENSIVE") {
-                hotwater_adjust = Number(config.price.hotwater_very_expensive);
-                adjust = config.price['heat_very_expensive_'+system]||0;
-            }
-            valueArray.push({x:timestamp,y:Number(value)});
-            adjustArray.push({x:timestamp,y:Number(adjust.toFixed(2))})
-            
-        }
-        valueArray.sort((a, b) => (a.x > b.x) ? 1 : -1)
-        adjustArray.sort((a, b) => (a.x > b.x) ? 1 : -1)
-
-        var sendArray = [
-            {
-                "series":["Pris","Kurvjustering"],
-                "data":[valueArray,adjustArray],
-                "labels":["Pris","Kurvjustering"]
-            }];
-        let result = {values:sendArray,system:system};
-        return result;
+        return buildPriceGraph(tibber.data.viewer.homes[0].currentSubscription.priceInfo, config.price, system);
     }
     async function runPrice(data,array) {
         //let data = Object.assign({}, result);
