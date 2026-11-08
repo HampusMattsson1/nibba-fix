@@ -1,5 +1,5 @@
-status med senaste kod: den säger fortfarande inget
+status med senaste kod: den säger fortfarande inget och fungerar inte. Dock behöver vi lägga till något visuellt sätt att veta att vi kör denna nibba-fix v0.1 t.ex. i webbgränssnittet.
 
-En tanke jag hade var ifall vi hade kunnat skapa en OCI-container av hela raspberry pi image:n: https://github.com/anerdins/nibepi/blob/master/README.en.md
-Jag vet inte ifall det är en ideal idé, eller om vi hade kunnat extrahera en del från det bara för att utöka testningen för att säkerställa att allt fungerar som tänkt.
-Det som vi helt enkelt vet är att i dess nuvarande form så fungerar det inte.
+OCI-Containern som ska representera en nibe-pi (konfigurerad raspberry pi som kör hela nibe image:n från http://anerdins.se/NibePi/nibepi_1.1.1.rar, som baserar sig på repot https://github.com/anerdins/nibepi.git) behöver visa att det faktiskt fungera, för att klassa att det verkligen är testat.
+
+Jag har nu med en flows.json som förväntas ligga i .node-red mappen bredvid t.ex. change.js, detta gör att vi har ett definierat flöde i web route:n /ui applikationen.
