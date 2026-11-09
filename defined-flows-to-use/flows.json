@@ -15026,12 +15026,28 @@
         "wires": []
     },
     {
+        "id": "7d2a64c6.53a9e8",
+        "type": "ui_text",
+        "z": "960078e.e3e6d88",
+        "group": "e6946a7.5e1e698",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Elpriskälla status",
+        "label": "Nibba-fix",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1148,
+        "y": 288,
+        "wires": []
+    },
+    {
         "id": "91d8769c.f63f68",
         "type": "function",
         "z": "960078e.e3e6d88",
         "name": "",
-        "func": "let config = msg.config;\nlet lang = config.system.language;\nif(lang===undefined) lang = \"SE\";\nlet translate = global.get('translate');\nif(translate===undefined) return;\nlet level = {\n    UNKNOWN: translate.dash.unknown[lang],\n    VERY_CHEAP: translate.dash.price_very_low[lang],\n    CHEAP: translate.dash.price_low[lang],\n    NORMAL:translate.dash.price_normal[lang],\n    EXPENSIVE: translate.dash.price_high[lang],\n    VERY_EXPENSIVE: translate.dash.price_very_high[lang]\n}\nif(msg.topic==\"Nuvarande Elpris\") {\n    node.send([{payload:`${msg.payload} ${translate.dash.currency[lang]}`}])\n} else if(msg.topic==\"Nuvarande Elprisnivå\") {\n    node.send([null,{payload:level[msg.payload]}])\n} else if (msg.topic == \"Nuvarande Elprisnivå (VV)\") {\n    node.send([null,null, { payload: level[msg.payload] }])\n}",
-        "outputs": 3,
+        "func": "let config = msg.config;\nlet lang = config.system.language;\nif(lang===undefined) lang = \"SE\";\nlet translate = global.get('translate');\nif(translate===undefined) return;\nlet level = {\n    UNKNOWN: translate.dash.unknown[lang],\n    VERY_CHEAP: translate.dash.price_very_low[lang],\n    CHEAP: translate.dash.price_low[lang],\n    NORMAL:translate.dash.price_normal[lang],\n    EXPENSIVE: translate.dash.price_high[lang],\n    VERY_EXPENSIVE: translate.dash.price_very_high[lang]\n}\nif(msg.topic==\"Nuvarande Elpris\") {\n    node.send([{payload:`${msg.payload} ${translate.dash.currency[lang]}`}])\n} else if(msg.topic==\"Nuvarande Elprisnivå\") {\n    node.send([null,{payload:level[msg.payload]}])\n} else if (msg.topic == \"Nuvarande Elprisnivå (VV)\") {\n    node.send([null,null, { payload: level[msg.payload] }])\n} else if (msg.topic == \"Elpriskälla\") {\n    let status = msg.payload || {};\n    let prefix = status.fix || \"nibba-fix v0.1\";\n    if(status.active===true) {\n        let updated = status.updated ? ` ${status.updated}` : \"\";\n        let source = status.source || \"elprisetjustnu\";\n        let area = status.area || \"\";\n        node.send([null,null,null,{payload:`${prefix}: ${source} ${area}${updated}`.trim()}]);\n    } else {\n        node.send([null,null,null,{payload:`${prefix}: fel ${status.error || \"okant fel\"}`}]);\n    }\n}",
+        "outputs": 4,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -15047,6 +15063,9 @@
             ],
             [
                 "230e9222de8cd50c"
+            ],
+            [
+                "7d2a64c6.53a9e8"
             ]
         ]
     },

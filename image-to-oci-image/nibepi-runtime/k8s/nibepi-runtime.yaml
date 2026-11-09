@@ -18,6 +18,11 @@ spec:
         - name: nibepi-runtime
           image: localhost/nibepi-runtime:latest
           imagePullPolicy: Never
+          env:
+            - name: NIBEPI_ELPRIS_TOKEN
+              value: "elpris:SE4"
+            - name: HTTPS_PROXY
+              value: "http://proxy.ltblekinge.org:8080"
           ports:
             - containerPort: 1880
               name: http

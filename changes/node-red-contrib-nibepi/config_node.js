@@ -2,6 +2,8 @@ module.exports = function(RED) {
     const EventEmitter = require('events').EventEmitter;
     require('events').EventEmitter.defaultMaxListeners = 600;
     const https = require('https');
+    const http = require('http');
+    const tls = require('tls');
     const buildPriceGraph = require('./price_graph.js');
     const nibeData = new EventEmitter()
     const nibe = require('nibepi')
@@ -966,13 +968,28 @@ module.exports = function(RED) {
         if(ratio<=1.5) return 'EXPENSIVE';
         return 'VERY_EXPENSIVE';
     };
+    // Node 12 ignores HTTPS_PROXY, so HTTPS is tunnelled with CONNECT when it is set.
+    const elprisGet = (options, onResponse, onError) => {
+        const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
+        if(proxy===undefined) return https.get(options, onResponse).on('error', onError);
+        const via = new URL(proxy);
+        http.request({host:via.hostname,port:via.port,method:'CONNECT',path:`${options.hostname}:${options.port}`}).on('connect', (res, socket) => {
+            if(res.statusCode!==200) {
+                socket.destroy();
+                return onError(`Proxy ${res.statusCode}`);
+            }
+            const tunnel = new https.Agent();
+            tunnel.createConnection = () => tls.connect({socket:socket,servername:options.hostname});
+            https.get({...options,agent:tunnel}, onResponse).on('error', onError);
+        }).on('error', onError).end();
+    };
     const fetchElprisDay = (area,day) => {
         const key = area+'_'+day;
         const cached = elprisCache[key];
         if(cached!==undefined && Date.now()-cached.fetchedAt<15*60000) return Promise.resolve(cached.data);
         const path = `/api/v1/prices/${day.slice(0,4)}/${day.slice(5,7)}-${day.slice(8,10)}_${area}.json`;
         return new Promise((resolve,reject) => {
-            https.get({hostname:'www.elprisetjustnu.se',port:443,path:path}, (res) => {
+            elprisGet({hostname:'www.elprisetjustnu.se',port:443,path:path}, (res) => {
                 let data = "";
                 res.on('data', (d) => {
                     data += d;
@@ -991,8 +1008,8 @@ module.exports = function(RED) {
                         reject('Ogiltigt svar');
                     }
                 });
-            }).on('error', (error) => {
-                reject(error.message);
+            }, (error) => {
+                reject(error.message || error);
             });
         });
     };
@@ -1000,18 +1017,24 @@ module.exports = function(RED) {
         const avg = rows.reduce((sum,r) => sum+r.SEK_per_kWh,0)/(rows.length||1);
         return rows.map(r => ({startsAt:r.time_start,endsAt:r.time_end,total:r.SEK_per_kWh,energy:r.SEK_per_kWh,tax:0,level:elprisLevel(r.SEK_per_kWh,avg)}));
     };
-    const getElprisData = () => {
-        const area = elprisToken.exec(nibe.getConfig().price.token)[1].toUpperCase();
-        const stockholm = new Date().toLocaleString('sv-SE',{timeZone:'Europe/Stockholm'});
-        const today = stockholm.slice(0,10);
-        const tomorrow = new Date(Date.UTC(+today.slice(0,4),+today.slice(5,7)-1,+today.slice(8,10)+1)).toISOString().slice(0,10);
+    const stockholmParts = (date) => {
+        // Node 12 small-icu ignores the sv-SE locale, so read the date parts explicitly.
+        const parts = {};
+        new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Stockholm',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(date).forEach(p => { parts[p.type] = p.value; });
+        return parts;
+    };
+    const getElprisData = (token = nibe.getConfig().price.token) => {
+        const area = elprisToken.exec(token)[1].toUpperCase();
+        const now = stockholmParts(new Date());
+        const today = `${now.year}-${now.month}-${now.day}`;
+        const tomorrow = new Date(Date.UTC(+now.year,+now.month-1,+now.day+1)).toISOString().slice(0,10);
         return Promise.all([fetchElprisDay(area,today),fetchElprisDay(area,tomorrow).catch(() => [])]).then(([todayRows,tomorrowRows]) => {
             const todayPrices = mapElprisDay(todayRows);
             const tomorrowPrices = mapElprisDay(tomorrowRows);
             const nowMs = Date.now();
             const current = todayPrices.concat(tomorrowPrices).find(p => Date.parse(p.startsAt)<=nowMs && nowMs<Date.parse(p.endsAt));
             if(current===undefined) return Promise.reject('Inget aktuellt pris');
-            nibeData.emit('pluginPriceSource',{active:true,area:area,updated:stockholm.slice(11,16),count:todayPrices.length+tomorrowPrices.length});
+            nibeData.emit('pluginPriceSource',{active:true,area:area,updated:`${String(Number(now.hour)%24).padStart(2,'0')}:${now.minute}`,count:todayPrices.length+tomorrowPrices.length});
             return {data:{viewer:{homes:[{currentSubscription:{status:'ACTIVE',priceInfo:{today:todayPrices,tomorrow:tomorrowPrices,current:current}}}]}}};
         }).catch(error => {
             nibeData.emit('pluginPriceSource',{active:false,area:area,error:String(error)});
@@ -2014,6 +2037,18 @@ const checkTranslation = (node) => {
             }
         })
 
+    const elprisEnvToken = process.env.NIBEPI_ELPRIS_TOKEN;
+    let elprisPoll;
+    if(elprisToken.test(elprisEnvToken || "")) {
+        const pollElpris = () => Promise.resolve().then(() => getElprisData(elprisEnvToken)).then(result => {
+            const priceInfo = result.data.viewer.homes[0].currentSubscription.priceInfo;
+            const priceConfig = nibe.getConfig().price || {};
+            ['s1','s2','s3','s4'].forEach(system => nibeData.emit('pluginPriceGraph', buildPriceGraph(priceInfo, priceConfig, system)));
+        }).catch(() => {});
+        setTimeout(pollElpris, 15000);
+        elprisPoll = cron.schedule('*/15 * * * *', pollElpris);
+    }
+
     nibe.data.on('config',data => {
         if(timer.config!==undefined && timer.config._idleTimeout>0) {
             clearTimeout(timer.config);
@@ -2085,6 +2120,7 @@ const checkTranslation = (node) => {
             nibeData.removeAllListeners();
             nibe.data.removeAllListeners();
             everyminute.stop();
+            if(elprisPoll!==undefined) elprisPoll.stop();
             threeminutes.stop();
             tenminutes.stop();
             hourly.stop();

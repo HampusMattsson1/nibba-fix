@@ -101,12 +101,13 @@ module.exports = function(RED) {
         })
 
         server.nibeData.on('pluginPriceSource', (data) => {
+            const sourceStatus = Object.assign({ fix: 'nibba-fix v0.1', source: 'elprisetjustnu' }, data);
             if(data.active) {
                 this.status({ fill: 'green', shape: 'dot', text: `Elpris ${data.area} ${data.updated}` });
             } else {
                 this.status({ fill: 'red', shape: 'dot', text: `Elpris ${data.area}: ${data.error}` });
             }
-            this.send({topic:"Elpriskälla",payload:data});
+            this.send({topic:"Elpriskälla",payload:sourceStatus});
         });
         let priceConfig = server.nibe.getConfig().price;
         if(priceConfig && priceConfig.enable===true && priceConfig.source==="tibber" &&
