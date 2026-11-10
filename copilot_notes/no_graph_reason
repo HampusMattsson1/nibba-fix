@@ -11,3 +11,18 @@ The Pi's graph stays empty because it has no path that works without a heat pump
 - The "Nuvarande elpris" values still need the heat pump. Only the graph was made independent of it.
 - A quicker alternative on the Pi is adding `Environment="NIBEPI_ELPRIS_TOKEN=elpris:SE4"` to `nodered.service`. This does the same as the container.
 - The `MaxListenersExceededWarning` in the log is unrelated and not addressed.
+
+<br>
+
+Nej, det behövs ingen miljövariabel på Pi:n längre, och ingen ny token behövs.
+
+- Efter min förra ändring läser `config_node.js:2043-2047` token från `price.token` i config när `price.enable` är på och `source` är `tibber`. Pollen körs var 15:e minut oavsett värmepumpen.
+- Värdet `elpris:SE4` som sätts i config sparas via `setConfig` till `/etc/nibepi/config.json` (`index.js`). Det är alltså redan persistent och överlever omstart.
+- Med `master` skulle vi fortfarande behöva veta vilket elområde (SE1–SE4) som ska användas. Det går inte att läsa ut ur ordet, så det skulle bara bli ett alias för något som ändå måste lagras.
+
+Jag har inte ändrat någon kod i det här steget. Jag kunde inte verifiera i arbetsytan var token-fältet i config-GUI:t finns, eftersom HTML-filerna i `node-red-contrib-nibepi` inte innehåller något `token`-fält.
+
+Förslag:
+1. Behåll `elpris:SE4` i config och ta bort `NIBEPI_ELPRIS_TOKEN` från Pi:n.
+2. Behåll env-variabeln i containern tills det är verifierat på Pi:n, eftersom containern inte har någon persistent `/etc/nibepi`.
+3. Vill du ändå ha `master`, säg vilket område det ska motsvara (fast SE4, eller ett separat fält `price.area`). Då implementerar jag det.
