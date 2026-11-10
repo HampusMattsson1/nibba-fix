@@ -1,4 +1,4 @@
-These are all the logs that nodered.service outputs, and the graphs dont get filled on the nbiepi but works perfectly in the container
+These are all the logs that nodered.service outputs, and the graphs dont get filled on the actual nibepi but works perfectly in the container
 
 -- Journal begins at Mon 2026-11-09 18:04:45 CET, ends at Mon 2026-11-09 18:06:59 CET. --
 Nov 09 18:04:48 nibepi systemd[1]: Started Node-RED graphical event wiring tool.

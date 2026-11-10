@@ -1,0 +1,13 @@
+The Pi's graph stays empty because it has no path that works without a heat pump connection. The container differs only in one setting.
+
+**Cause:** The container sets `NIBEPI_ELPRIS_TOKEN=elpris:SE4` in its k8s manifest. That starts a 15-minute poll that fills the graph without a heat pump. The Pi's `nodered.service` has no such variable. There, the graph comes only from `updateData`, which runs only when `nibe.core.connected === true`. The journal shows no "Core is connected" line, so the heat pump connection doesn't seem to be up.
+
+**Change:** In `config_node.js:2040`, the poll now also activates from the UI settings (price enabled, source Tibber, token `elpris:SE1`–`SE4`), not only from the env variable. The container behaviour is unchanged. The file has no lint errors.
+
+**Not verified:** Node is not installed here, so the tests were not run. Nothing has been tested on the Pi yet. Copy the file to the Pi's `node_modules/node-red-contrib-nibepi/` as described in `ELPRIS.md`.
+
+**Notes:**
+- After setting the token in the UI, the first graph can take up to 15 minutes. A restart gives one after about 15 seconds.
+- The "Nuvarande elpris" values still need the heat pump. Only the graph was made independent of it.
+- A quicker alternative on the Pi is adding `Environment="NIBEPI_ELPRIS_TOKEN=elpris:SE4"` to `nodered.service`. This does the same as the container.
+- The `MaxListenersExceededWarning` in the log is unrelated and not addressed.

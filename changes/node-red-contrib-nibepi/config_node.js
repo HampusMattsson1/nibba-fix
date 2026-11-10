@@ -2039,15 +2039,24 @@ const checkTranslation = (node) => {
 
     const elprisEnvToken = process.env.NIBEPI_ELPRIS_TOKEN;
     let elprisPoll;
-    if(elprisToken.test(elprisEnvToken || "")) {
-        const pollElpris = () => Promise.resolve().then(() => getElprisData(elprisEnvToken)).then(result => {
+    // Graf is fed by this poll, not by updateData, which needs a connected heat pump.
+    const elprisPollToken = () => {
+        if(elprisToken.test(elprisEnvToken || "")) return elprisEnvToken;
+        const price = nibe.getConfig().price || {};
+        if(price.enable===true && price.source==="tibber" && elprisToken.test(price.token || "")) return price.token;
+        return undefined;
+    };
+    const pollElpris = () => {
+        const token = elprisPollToken();
+        if(token===undefined) return;
+        Promise.resolve().then(() => getElprisData(token)).then(result => {
             const priceInfo = result.data.viewer.homes[0].currentSubscription.priceInfo;
             const priceConfig = nibe.getConfig().price || {};
             ['s1','s2','s3','s4'].forEach(system => nibeData.emit('pluginPriceGraph', buildPriceGraph(priceInfo, priceConfig, system)));
         }).catch(() => {});
-        setTimeout(pollElpris, 15000);
-        elprisPoll = cron.schedule('*/15 * * * *', pollElpris);
-    }
+    };
+    setTimeout(pollElpris, 15000);
+    elprisPoll = cron.schedule('*/15 * * * *', pollElpris);
 
     nibe.data.on('config',data => {
         if(timer.config!==undefined && timer.config._idleTimeout>0) {
